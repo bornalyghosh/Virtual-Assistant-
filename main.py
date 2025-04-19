@@ -36,7 +36,8 @@ def greet():
         speak("Good Afternoon")
     else:
         speak("Good evening") 
-        speak("How can I assist you today?")
+
+    speak("How can I assist you today?")
 
 def main():
     greet()
@@ -60,6 +61,14 @@ def main():
         elif "joke" in command:
             joke = pyjokes.get_joke()
             speak(joke)
+
+        elif "youtube" in command:
+            speak("What should I search on YouTube?")
+            search_query = listen()
+            url = f"https://www.youtube.com/results?search_query={search_query.replace(' ', '+')}"
+            webbrowser.open(url)
+            speak(f"Here are the results for {search_query} on YouTube.")
+    
 
         elif "stop" in command or "exit" in command:
             speak("Goodbye!")
